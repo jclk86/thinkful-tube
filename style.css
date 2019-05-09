@@ -151,3 +151,12 @@ input {
 img {
   margin: 20px;
 }
+
+img:focus,
+img:hover,
+input:focus,
+input:hover,
+button:focus,
+button:hover {
+  outline: 5px dotted salmon;
+}

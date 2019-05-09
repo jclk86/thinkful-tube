@@ -12,17 +12,19 @@
     <h1>Thinkful Tube</h1>
     <div id="form-container">
       <form>
-        <legend>Search Youtube Videos</legend>
-        <label for="search video">Search Video</label>
-        <input
-          placeholder="Enter video name"
-          type="text"
-          name="search-video"
-          id="search-video"
-        />
-        <button type="submit">Submit</button>
+        <label for="search video"
+          >Search for YouTube Videos
+          <input
+            placeholder="Enter video name"
+            type="text"
+            name="search-video"
+            id="search-video"
+          />
+        </label>
+        <button type="submit" role="button">Submit</button>
       </form>
     </div>
+    <div class="js-total-results" aria-live="assertive"></div>
     <div class="js-search-results"></div>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"

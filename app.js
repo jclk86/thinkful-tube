@@ -1,5 +1,4 @@
 const YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search";
-
 function getDataFromApi(searchWord, callback) {
   const query = {
     q: `${searchWord}`,
@@ -10,7 +9,20 @@ function getDataFromApi(searchWord, callback) {
 }
 
 function renderResults(item) {
-  return `<img src="${item.snippet.thumbnails.medium.url}">`;
+  return `<a href="https://www.youtube.com/watch?v=${
+    item.id.videoId
+  }&$ab_channel=${item.snippet.channelTitle}"${item.snippet}"><img src="${
+    item.snippet.thumbnails.medium.url
+  }" alt="${item.snippet.title}"></a>`;
+}
+
+function renderResultTotal(item) {
+  return `<div class="result-count">Total Search Results: ${item.length}</div>`;
+}
+
+function displayTotalSearchResults(data) {
+  const total = renderResultTotal(data.items);
+  $(".js-total-results").html(total);
 }
 
 function displayYouTubeSearchData(data) {
@@ -24,6 +36,9 @@ function handleSubmit() {
     const queryTarget = $(event.currentTarget).find("#search-video");
     const query = queryTarget.val();
     getDataFromApi(query, displayYouTubeSearchData);
+    getDataFromApi(query, displayTotalSearchResults);
+    prompt("You submitted");
+    queryTarget.val("");
   });
 }
 
